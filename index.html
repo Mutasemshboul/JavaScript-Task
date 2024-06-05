@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+    <section>
+        <div class="calculator">
+            <form>
+                <label>Enter the firts number</label>
+                <input id="num1" type="number">
+
+                <label>Enter the opreator</label>
+                <input id="op" type="text">
+
+                <label>Enter the second number</label>
+                <input id="num2" type="number">
+
+                <button type="button" onclick="calc()">Calculate</button>
+            </form>
+        </div>
+    </section>
+    <h1 id="result"></h1>
+
+
+    <hr>
+    <h1>Grade Calculator</h1>
+    <input type="number" id="mark" >
+    <button onclick="calcGrade()">Calculate Grade</button>
+    <h2 id="grade"></h2>
+
+
+
+    <hr>
+    <button type="button" onclick="piFunc()">Calculate</button>
+    <h>π * 2 = <span id="pi"></span></h>
+
+    <hr>
+
+    <h1 id="welcome" ></h1>
+    
+</body>
+
+<script src="script.js"></script>
+
+<script>
+    welcomeFunc()
+</script>
+</html>
