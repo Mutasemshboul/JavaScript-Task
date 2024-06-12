@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 5</title>
+</head>
+<body>
+
+    <div>
+        <div>
+            <select  id="fontSelector" onchange="changeTextarea()">
+                <option value="Arial">Arial</option>
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Courier New">Courier New</option>
+            </select>
+            <select  id="sizeSelector" onchange="changeTextarea()">
+                <option value="200">10pt</option>
+                <option value="500">12pt</option>
+                <option value="700">14pt</option>
+                <option value="900">16pt</option>
+            </select>
+            <span>Itlic</span>
+            <input onchange="changeTextarea()" type="checkbox" id="italic">
+            <span>Bold</span>
+            <input onchange="changeTextarea()" type="checkbox" id="bold">
+            <span>Underline</span>
+            <input onchange="changeTextarea()" type="checkbox" id="underline">
+
+        </div>
+        <div>
+            <textarea name="" rows="10" cols="100" id=""></textarea>
+        </div>
+    </div>
+    
+</body>
+<script>
+    function changeTextarea(){
+        let textarea = document.querySelector('textarea');
+        let fontSelect = document.querySelector('#fontSelector');
+        let sizeSelect = document.querySelector('#sizeSelector');
+        let italicCheckbox = document.querySelector('#italic');
+        let boldCheckbox = document.querySelector('#bold');
+        let underlineCheckbox = document.querySelector('#underline');
+
+        textarea.style.fontStyle = italicCheckbox.checked ? 'italic' : 'normal';
+        textarea.style.fontWeight = boldCheckbox.checked ? 'bold' : 'normal';
+        textarea.style.textDecoration = underlineCheckbox.checked ? 'underline' : 'none';
+
+        textarea.style.fontFamily = fontSelect.value;
+        textarea.style.fontSize = sizeSelect.value;
+
+    }
+</script>
+</html>

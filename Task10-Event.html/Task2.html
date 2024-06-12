@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<style>
+    div{
+        display: flex;
+        flex-direction: column;
+        width: 40%;
+    }
+</style>
+<body>
+    <div>
+        <select style="width: 20%;" name="" id="select-flag" onchange="changeImg()">
+            <option selected>Select a country </option>
+            <option value="Jordan">Jordan</option>
+            <option value="Palastine">Palastine</option>
+        </select>
+        <img id="flag-img">
+    </div>
+</body>
+
+<script>
+function changeImg(){
+    var select = document.getElementById("select-flag");
+    var img = document.getElementById("flag-img");
+    var selectedValue = select.options[select.selectedIndex].value;
+    if(selectedValue === "Jordan"){
+        console.log(selectedValue)
+        img.src= "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Flag_of_Jordan.svg/1920px-Flag_of_Jordan.svg.png";
+        } 
+    else if(selectedValue === "Palastine"){
+        img.src = "https://as1.ftcdn.net/v2/jpg/02/03/15/34/1000_F_203153438_6tvdEUB2Nw9K0pubP6GAk7TjSIKlLorI.jpg";
+    }
+    else{
+        img.src=""
+    }
+            
+}
+</script>
+</html>

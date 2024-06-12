@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 3</title>
+</head>
+<body>
+    <!-- You should allow the user to enter a password. 
+    When it is too short, it should indicate that it is 
+    too short in red, as shown. When the password does not match the confirmation, 
+    it should indicate that they do not match. -->
+    <div>
+        <form action="" method="post">
+            <label for="password">Enter password:</label>
+            <input  onchange="passwordLength()" type="password" id="password" name="password">
+            <span id="password-length" hidden style='color:red '>Password is too short!</span><br><br>
+
+            <label for="confirm_password">Confirm password:</label>
+            <input onchange="confirm_pass()" type="password" id="confirm_password" name="confirm_password">
+            <span id="pass-confirm" hidden style='color:red '>Password did not match</span><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+<script>
+    function passwordLength(){
+        let password = document.getElementById("password").value;
+        if(password.length < 6){
+            document.getElementById("password-length").hidden = false;
+        }
+        else{
+            document.querySelector("span").hidden = true;
+        }
+}
+
+function confirm_pass(){
+    let password = document.getElementById("password").value;
+    let confirm_password = document.getElementById("confirm_password").value;
+    if(password !== confirm_password){
+        document.getElementById("pass-confirm").hidden = false;
+    }
+    else{
+        document.getElementById("pass-confirm").hidden = true;
+    }
+    
+}
+</script>
+</html>

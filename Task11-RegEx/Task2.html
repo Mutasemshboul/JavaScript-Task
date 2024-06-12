@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm">
+        First Name: <input type="text" id="firstName" required><br>
+        <p id="firstNameError" class="error"></p>
+        Last Name: <input type="text" id="lastName" required><br>
+        <p id="lastNameError" class="error"></p>
+        Birth Date: <input type="date" id="birthDate" required><br>
+        <p id="birthDateError" class="error"></p>
+        Email: <input type="email" id="email" required><br>
+        Confirm Email: <input type="email" id="confirmEmail" required><br>
+        <p id="emailError" class="error"></p>
+        Password: <input type="password" id="password" required><br>
+        Confirm Password: <input type="password" id="confirmPassword" required><br>
+        <p id="passwordError" class="error"></p>
+        Mobile Number: <input type="text" id="mobileNumber" required><br>
+        <p id="mobileNumberError" class="error"></p>
+        <button type="button" onclick="registerUser()">Register</button>
+    </form>
+</body>
+<script>
+    function registerUser() {
+        const fields = {
+            firstName: document.getElementById('firstName').value,
+            lastName: document.getElementById('lastName').value,
+            birthDate: document.getElementById('birthDate').value,
+            email: document.getElementById('email').value,
+            confirmEmail: document.getElementById('confirmEmail').value,
+            password: document.getElementById('password').value,
+            confirmPassword: document.getElementById('confirmPassword').value,
+            mobileNumber: document.getElementById('mobileNumber').value
+        };
+        document.getElementById('firstNameError').textContent = /^[a-zA-Z]+$/.test(fields.firstName) ? '' : "First name must contain only letters.";
+        document.getElementById('lastNameError').textContent = /^[a-zA-Z]+$/.test(fields.lastName) ? '' : "Last name must contain only letters.";
+        document.getElementById('emailError').textContent = fields.email === fields.confirmEmail ? '' : "Emails do not match.";
+        document.getElementById('emailError').textContent += /^\S+@\S+\.\S+$/.test(fields.email) ? '' : " Invalid email format.";
+        document.getElementById('passwordError').textContent = (/^[A-Z]/.test(fields.password) && /\d.*\d/.test(fields.password) && /[!@#$%^&*(),.?":{}|<>]/.test(fields.password) && fields.password.length >= 8 && fields.password.length <= 32) ? '' : "Password must start with a capital letter, have at least two numbers, at least one special character, and be between 8 and 32 characters long.";
+        document.getElementById('passwordError').textContent += fields.password === fields.confirmPassword ? '' : " Passwords do not match.";
+        document.getElementById('mobileNumberError').textContent = /^\d{10}$/.test(fields.mobileNumber) ? '' : "Mobile number must be exactly 10 digits.";
+    }
+</script>
+</html>

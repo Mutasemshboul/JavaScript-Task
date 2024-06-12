@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4</title>
+</head>
+<style>
+    .main-div{
+        width: 50%;
+        border: 1px solid;
+    }
+
+
+    .inner-div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: rgb(209, 201, 201);
+    }
+    a{
+        font-size: 900;
+        padding-right:10px;
+    }
+</style>
+<body>
+
+    <div class="main-div">
+        <div class="inner-div">
+            <h1 class="title"> What is Lorem ipsum?</h1>
+            <a  onclick="hiddeParagraph(this)" href="#">Show</a>
+
+        </div>
+        <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Enim non similique cum placeat earum facere illo minus obcaecati quisquam 
+            eos officiis consequatur, dignissimos laborum tempore exercitationem ex, 
+            eum blanditiis laboriosam aperiam. Suscipit corrupti blanditiis architecto 
+            repellendus. Culpa dolor aspernatur 
+            architecto soluta possimus voluptas totam repudiandae, aut numquam tempora vitae velit!</p>
+    </div>
+
+    <div class="main-div">
+        <div class="inner-div">
+            <h1 class="title"> What is Lorem ipsum?</h1>
+            <a  onclick="hiddeParagraph(this)" href="#">Show</a>
+
+        </div>
+        <p class="content">Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+            Enim non similique cum placeat earum facere illo minus obcaecati quisquam 
+            eos officiis consequatur, dignissimos laborum tempore exercitationem ex, 
+            eum blanditiis laboriosam aperiam. Suscipit corrupti blanditiis architecto 
+            repellendus. Culpa dolor aspernatur 
+            architecto soluta possimus voluptas totam repudiandae, aut numquam tempora vitae velit!</p>
+    </div>
+    
+    
+</body>
+<script>
+    function hiddeParagraph(element){
+        var content = element.closest('.inner-div').nextElementSibling;
+        content.style.display = content.style.display === 'none' ? '' : 'none';
+        element.textContent = content.style.display === 'none' ? 'Show' : 'Hide';
+}
+
+</script>
+</html>
