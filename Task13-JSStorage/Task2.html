@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Idea Submission Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form, .card {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px #ccc;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0 10px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .checkboxgroup, .card {
+            margin-bottom: 10px;
+        }
+        .card {
+            background: #f0f0f0;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form id="projectIdeaForm">
+        <label for="subject">Project Subject:</label>
+        <input type="text" id="subject" name="subject" required>
+
+        <label for="description">Project Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="userTypes">User Types:</label>
+        <input type="text" id="userTypes" name="userTypes" required>
+
+        <label for="technologyUsed">Technology Used:</label>
+        <input type="text" id="technologyUsed" name="technologyUsed" required>
+
+        <input type="button" onclick="addDataToSeissonStorage()" value="Submit">
+    </form>
+
+    <div id="projectsContainer"></div>
+
+    <script>
+        function addDataToSeissonStorage() {
+            const projectData = {
+                subject: document.getElementById('subject').value,
+                description: document.getElementById('description').value,
+                userTypes: document.getElementById('userTypes').value,
+                technologyUsed: document.getElementById('technologyUsed').value
+            };
+
+            sessionStorage.setItem('projectData', JSON.stringify(projectData));
+            renderProjectData(projectData);
+        };
+
+        function renderProjectData(data) {
+            const container = document.getElementById('projectsContainer');
+            container.innerHTML = `
+                <div class="card">
+                    <h2>${data.subject}</h2>
+                    <p>Description: ${data.description}</p>
+                    <p>User Types: ${data.userTypes}</p>
+                    <p>Technology Used: ${data.technologyUsed}</p>
+                </div>
+            `;
+        }
+
+    </script>
+</body>
+</html>

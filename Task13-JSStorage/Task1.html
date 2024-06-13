@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Data Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form, .card {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px #ccc;
+        }
+        label {
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 4px 0 10px;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+        input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 10%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .checkboxgroup, .card {
+            margin-bottom: 10px;
+        }
+        .card {
+            background: #f0f0f0;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form >
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="age">Your Age:</app-label>
+        <input type="number" id="age" name="age" required>
+
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" required>
+        <label for="female">Female</label><br>
+
+        <label for="description">Brief Description:</label>
+        <textarea id="description" name="description" required></textarea>
+
+        <label for="major">Your Major and University:</label>
+        <input type="text" id="major" name="major" required>
+
+        <label>Programming Languages (select at least three):</label>
+        <div class="checkboxgroup">
+            <input type="checkbox" id="java" name="programming_language" value="Java">
+            <label for="java">Java</label>
+            <input type="checkbox" id="python" name="programming_language" value="Python">
+            <lab htmlFor="python">Python</label>
+            <input type="checkbox" id="javascript" name="programming_language" value="JavaScript">
+            <label for="javascript">JavaScript</label>
+            <input type="checkbox" id="csharp" name="programming_language" value="C#">
+            <label for="csharp">C#</label>
+            <input type="checkbox" id="cpp" name="programming_language" value="C++">
+            <label for="cpp">C++</label>
+        </div>
+
+        <input class="btn" onclick="addDataToLocalStorage()" type="button" value="Submit">
+    </form>
+
+    <div id="cardsContainer"></div>
+
+</body>
+<script>
+    function addDataToLocalStorage(){
+        var name = document.getElementById("name").value;
+        var age = document.getElementById("age").value;
+        var gender = document.querySelector('input[name="gender"]:checked').value;
+        var description = document.getElementById("description").value;
+        var major = document.getElementById("major").value;
+        var programming_languages = [];
+        var checkboxes = document.querySelectorAll('input[name="programming_language"]:checked');
+        for (var i = 0; i < checkboxes.length; i++) {
+            programming_languages.push(checkboxes[i].value);
+        }
+        var data = {
+            "name": name,
+            "age": age,
+            "gender": gender,
+            "description": description,
+            "major": major,
+            "programming_languages": programming_languages
+            };
+            localStorage.setItem("data", JSON.stringify(data));
+                
+            addDataToCard(data);
+    }
+
+    function addDataToCard(data) {
+            const container = document.getElementById('cardsContainer');
+            container.innerHTML = `
+                <div class="card">
+                    <h2>${data.name}</h2>
+                    <p>Age: ${data.age}</p>
+                    <p>Gender: ${data.gender}</p>
+                    <p>Description: ${data.description}</p>
+                    <p>Major and University: ${data.major}</p>
+                    <p>Programming Languages: ${data.programming_languages}</p>
+                </div>
+            `;
+        }
+        
+</script>
+</html>
